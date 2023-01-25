@@ -1,4 +1,4 @@
-package world;
+package adventuregame.world;
 
 public enum CardinalDirection
 {

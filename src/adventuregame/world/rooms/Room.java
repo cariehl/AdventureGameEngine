@@ -1,4 +1,4 @@
-package world.rooms;
+package adventuregame.world.rooms;
 
 public abstract class Room
 {
@@ -12,7 +12,7 @@ public abstract class Room
      * "Entry Hallway"
      * "Treasure Horde"
      */
-    private String roomTitle;
+    public final String TITLE;
     
     /**
      * Description of this room. This should be formatted so that it can fit
@@ -24,7 +24,7 @@ public abstract class Room
      * "a dark, smelly cavern"
      * "the king's throne room"
      */
-    private String roomDescription;
+    public final String DESCRIPTION;
 
     /**
      * Protected constructor for subclasses to call while initializing.
@@ -33,7 +33,7 @@ public abstract class Room
      */
     protected Room(String roomTitle, String roomDescription)
     {
-        this.roomTitle = roomTitle;
-        this.roomDescription = roomDescription;
+        this.TITLE = roomTitle;
+        this.DESCRIPTION = roomDescription;
     }
 }

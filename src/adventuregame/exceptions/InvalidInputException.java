@@ -1,4 +1,4 @@
-package exceptions;
+package adventuregame.exceptions;
 
 public class InvalidInputException extends RuntimeException
 {
