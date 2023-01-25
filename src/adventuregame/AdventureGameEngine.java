@@ -9,21 +9,34 @@ import adventuregame.exceptions.InvalidInputException;
 import adventuregame.game.Adventurer;
 import adventuregame.input.InputSystem;
 import adventuregame.input.tokens.TokenList;
-import adventuregame.world.DungeonMap;
+import adventuregame.world.Level;
 
+/**
+ * The {@link AdventureGameEngine} class provides the entry-point into the
+ * library. Users should create an instance of this class and then call the
+ * `run()` method in order to interact with the library.
+ */
 public class AdventureGameEngine
 {
-    private EngineContext engineContext;
+    /**
+     * The current {@link EngineContext}, representing the state of the engine.
+     * This is used by other parts of the engine to interact with things like
+     * user I/O, and to make decisions based on the current state.
+     */
+    private final EngineContext engineContext;
 
+    /**
+     * The factory used to create game action objects based on user input.
+     */
     private final TopLevelGameActionFactory gameActionFactory;
 
     /**
      * Create a new {@link AdventureGameEngine}.
-     * @param dungeonMap The {@link DungeonMap} to use for this adventure.
+     * @param dungeonMap The {@link Level} to use for this adventure.
      * @param inputStream The {@link InputStream} to use to retrieve user input.
      * @param outputStream The {@link PrintStream} to use for displaying game messages.
      */
-    public AdventureGameEngine(DungeonMap dungeonMap, InputStream inputStream, PrintStream outputStream)
+    public AdventureGameEngine(Level dungeonMap, InputStream inputStream, PrintStream outputStream)
     {
         InputSystem inputSystem = new InputSystem(inputStream);
         Adventurer adventurer = new Adventurer();
@@ -32,6 +45,9 @@ public class AdventureGameEngine
         this.gameActionFactory = new TopLevelGameActionFactory();
     }
 
+    /**
+     * Run the engine.
+     */
     public void run()
     {
         // Display introduction text.
@@ -59,6 +75,10 @@ public class AdventureGameEngine
         }
     }
 
+    /**
+     * Read in a user command from the input system, translate the command into
+     * a game action, and then perform that action.
+     */
     private void processNextUserCommand()
     {
         // Get user command.
@@ -68,6 +88,6 @@ public class AdventureGameEngine
         GameAction nextAction = gameActionFactory.fromTokens(inputTokens, engineContext);
 
         // Perform resulting action within the current game context.
-        nextAction.perform(engineContext);
+        nextAction.resolve(engineContext);
     }
 }

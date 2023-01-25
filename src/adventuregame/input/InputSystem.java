@@ -6,6 +6,10 @@ import java.util.Scanner;
 import adventuregame.input.tokens.TokenFactory;
 import adventuregame.input.tokens.TokenList;
 
+/**
+ * An {@link InputSystem} provides a simple way to retrieve tokenized user input
+ * from some input source.
+ */
 public class InputSystem
 {
     /**

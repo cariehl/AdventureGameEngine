@@ -1,9 +1,16 @@
 package adventuregame.world.rooms;
 
+import adventuregame.game.Adventurer;
+
+/**
+ * A {@link Room} is the basic unit of exploration for the adventure game. The
+ * {@link Adventurer} occupies exactly one room at a time. Rooms may contain
+ * items and/or entities, and often have exits leading to other rooms.
+ */
 public abstract class Room
 {
     /**
-     * Title of this room. This will be displayed alongside the title of the
+     * The title of this room. This will be displayed alongside the title of the
      * dungeon map that this room belongs to, e.g.
      * "{Dungeon Map Title} - {roomTitle}".
      * 
@@ -15,7 +22,7 @@ public abstract class Room
     public final String TITLE;
     
     /**
-     * Description of this room. This should be formatted so that it can fit
+     * A description of this room. This should be formatted so that it can fit
      * into various types of messages, e.g.
      * "You enter {roomDescription}."
      * "You are in {roomDescription}."

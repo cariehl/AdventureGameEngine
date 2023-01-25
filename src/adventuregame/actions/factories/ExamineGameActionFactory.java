@@ -14,7 +14,7 @@ public class ExamineGameActionFactory extends GameActionFactory
     @Override
     public GameAction fromTokens(TokenList tokenList, EngineContext engineContext)
     {
-        if (tokenList.empty())
+        if (tokenList.isEmpty())
         {
             return new ExamineRoomAction();
         }
