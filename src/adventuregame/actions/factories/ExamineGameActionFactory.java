@@ -5,19 +5,15 @@ import adventuregame.actions.examine.ExamineRoomAction;
 import adventuregame.engine.EngineContext;
 import adventuregame.input.tokens.TokenList;
 
-public class ExamineGameActionFactory extends GameActionFactory
-{
-    public ExamineGameActionFactory()
-    {
-    }
+public class ExamineGameActionFactory extends GameActionFactory {
+	public ExamineGameActionFactory() {
+	}
 
-    @Override
-    public GameAction fromTokens(TokenList tokenList, EngineContext engineContext)
-    {
-        if (tokenList.isEmpty())
-        {
-            return new ExamineRoomAction();
-        }
-    }
-    
+	@Override
+	public GameAction fromTokens(TokenList tokenList, EngineContext engineContext) {
+		if (tokenList.isEmpty()) {
+			return new ExamineRoomAction();
+		}
+	}
+
 }
