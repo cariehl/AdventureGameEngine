@@ -18,7 +18,7 @@ public class ErrorAction extends GameAction {
 
 	/**
 	 * Create a new {@link ErrorAction} that displays the given message.
-	 * 
+	 *
 	 * @param errorMessage The message to display when this action resolves.
 	 */
 	public ErrorAction(String errorMessage) {
@@ -26,7 +26,7 @@ public class ErrorAction extends GameAction {
 	}
 
 	@Override
-	public void resolve(EngineContext engineContext) {
+	protected void resolveImpl(EngineContext engineContext) {
 		engineContext.output.println(errorMessage);
 	}
 }

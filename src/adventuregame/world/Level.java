@@ -16,7 +16,11 @@ public abstract class Level {
 	 * "Bandit Camp - Leader's Tent"
 	 * "Underdark, Floor I - Above a dark chasm"
 	 */
-	public final String MAP_TITLE;
+	public final String mapTitle;
+
+	protected Level(String mapTitle) {
+		this.mapTitle = mapTitle;
+	}
 
 	/**
 	 * @return The room that the {@link Adventurer} currently occupies.
@@ -25,7 +29,7 @@ public abstract class Level {
 
 	/**
 	 * Get the next room in the given direction from the current room.
-	 * 
+	 *
 	 * @param direction The direction from the current room to retrieve.
 	 * @return The {@link Room} in the given direction, or {@code null} if there
 	 *         is no such room.
@@ -34,7 +38,7 @@ public abstract class Level {
 
 	/**
 	 * Move the {@link Adventurer} to the given room.
-	 * 
+	 *
 	 * @param room The room to move to.
 	 */
 	public abstract void moveTo(Room room);
