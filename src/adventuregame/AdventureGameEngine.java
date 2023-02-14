@@ -38,11 +38,10 @@ public class AdventureGameEngine {
 	 * @param outputStream The {@link PrintStream} to use for displaying game
 	 *                     messages.
 	 */
-	public AdventureGameEngine(Level dungeonMap, InputStream inputStream, PrintStream outputStream) {
+	public AdventureGameEngine(Level level, InputStream inputStream, PrintStream outputStream) {
 		InputSystem inputSystem = new InputSystem(inputStream);
 		Adventurer adventurer = new Adventurer();
-
-		this.engineContext = new EngineContext(inputSystem, outputStream, adventurer, dungeonMap);
+		this.engineContext = new EngineContext(inputSystem, outputStream, adventurer, level);
 		this.gameActionFactory = new TopLevelGameActionFactory();
 	}
 

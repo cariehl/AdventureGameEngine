@@ -5,7 +5,9 @@ import java.util.Map;
 import adventuregame.actions.ErrorAction;
 import adventuregame.actions.GameAction;
 import adventuregame.engine.EngineContext;
+import adventuregame.exceptions.InvalidInputException;
 import adventuregame.input.tokens.TokenList;
+import adventuregame.input.tokens.TokenList.TokenListIndexOutOfBoundsException;
 
 import static java.util.Map.entry;
 
@@ -28,11 +30,16 @@ public class TopLevelGameActionFactory extends GameActionFactory {
 
 	@Override
 	public GameAction fromTokens(TokenList tokenList, EngineContext engineContext) {
-		String actionToken = tokenList.first();
-		if (gameActionFactories.containsKey(actionToken)) {
-			return gameActionFactories.get(actionToken).fromTokens(tokenList.after(0), engineContext);
-		} else {
-			return new ErrorAction(String.format("I don't recognize the action word '%s'.", actionToken));
+		try {
+			String actionToken = tokenList.first();
+
+			if (gameActionFactories.containsKey(actionToken)) {
+				return gameActionFactories.get(actionToken).fromTokens(tokenList.after(0), engineContext);
+			} else {
+				return new ErrorAction(String.format("I don't recognize the action word '%s'.", actionToken));
+			}
+		} catch (TokenListIndexOutOfBoundsException ex) {
+			throw new InvalidInputException();
 		}
 	}
 }
